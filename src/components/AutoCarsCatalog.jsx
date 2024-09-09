@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-
-const Section2 = () => {
+const Katalog = () => {
   const initialCars = [
     {
       id: 1,
@@ -62,7 +62,6 @@ const Section2 = () => {
     },
   ];
 
-  // State to track liked status of cars
   const [cars, setCars] = useState(initialCars);
   const [likedCars, setLikedCars] = useState(new Set());
 
@@ -72,7 +71,7 @@ const Section2 = () => {
         car.id === id
           ? {
               ...car,
-              likes: likedCars.has(id) ? car.likes -  1 : car.likes +  1,
+              likes: likedCars.has(id) ? car.likes - 1 : car.likes + 1,
             }
           : car
       )
@@ -95,11 +94,13 @@ const Section2 = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4">
           {cars.map((car) => (
             <div key={car.id} className="border p-4 rounded-lg shadow-md">
-              <img
-                src={car.image}
-                alt={`Car ${car.id}`}
-                className="w-full h-40 object-cover mb-2"
-              />
+              <Link to={`/about-cars/${car.id}`}>
+                <img
+                  src={car.image}
+                  alt={`Car ${car.id}`}
+                  className="w-full h-40 object-cover mb-2"
+                />
+              </Link>
               <p className="text-lg font-bold">${car.price.toLocaleString()}</p>
               <p className="text-sm text-gray-600">{car.engineType}</p>
               <p className="text-sm text-gray-800 mt-2">{car.description}</p>
@@ -130,9 +131,9 @@ const Section2 = () => {
         <div>
           <b className="text-xl">
             <u>
-              <a className="text-[#293843]" href="#">
+              <Link className="text-[#293843]" to="/about-cars">
                 Перейти в каталог
-              </a>
+              </Link>
             </u>
           </b>
         </div>
@@ -144,4 +145,5 @@ const Section2 = () => {
   );
 };
 
-export default Section2;
+export default Katalog;
+

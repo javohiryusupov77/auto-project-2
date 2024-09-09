@@ -16,8 +16,7 @@ const Footer = () => {
               <FaTelegramPlane size={30} />
               <FaInstagram size={30} />
             </div>
-            <p className="mb-2">Lorem, ipsum</p>
-            <p>Lorem ipsum, dolor sit amet consectetur</p>
+            <p>© 1-й автоброкер Внесём качественные изменения в Вашу жизнь!</p>
           </div>
           <div className="flex flex-col">
             <b className="mb-2">Компания</b>
@@ -115,8 +114,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-around p-4">
-        <p style={{ color: "white" }}>.</p>
+      <div className="flex items-center justify-around p-4 text-black text-center">
+        <p className="text-white">.</p>
         <p>Политика конфиденциальности</p>
         <p>Сделано в UserTech</p>
       </div>

@@ -187,7 +187,8 @@ const Header = () => {
             </div>
             <div>
               <select
-                className="border rounded p-1 text-sm"
+              style={{outline:"none"}}
+                className="border rounded p-1 text-sm bg-inherit"
                 value={language}
                 onChange={handleLanguageChange}
               >
@@ -199,7 +200,10 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <div className="flex flex-wrap items-center p-4 md:justify-between md:space-x-4">
+      <div
+        style={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
+        className="flex flex-wrap items-center py-4 px-11 md:justify-between md:space-x-4 shadow-slate-100"
+      >
         <div className="flex-grow">
           <h1 className="text-2xl font-bold">
             <a href="#" className="text-blue-600">
@@ -246,6 +250,7 @@ const Header = () => {
           </button>
         </div>
       </div>
+      <br />
     </>
   );
 };

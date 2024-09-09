@@ -26,7 +26,7 @@ const CarouselHeader = () => {
   };
 
   return (
-    <div className="relative bg-slate-200 p-10">
+    <div className="relative bg-slate-200 p-10 m-6">
       <div className="flex flex-col md:flex-row justify-around items-center">
         <div className="p-4 md:w-1/2">
           <b className="text-4xl">Новый Geely Monjaro!</b>
@@ -47,7 +47,6 @@ const CarouselHeader = () => {
           />
         </div>
       </div>
-
       <div className="absolute bottom-4 right-4 md:right-10 md:bottom-10 flex items-center space-x-4">
         <div className="flex space-x-2">
           {images.map((_, index) => (
