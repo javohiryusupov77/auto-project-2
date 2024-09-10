@@ -12,12 +12,12 @@ const AboutUs = () => {
           <img
             src={bgOfPerson}
             alt="bgOfPerson"
-            className="absolute inset-0 w-full h-auto"
+            className="absolute inset-0"
           />
           <img
             src={imageOfPerson}
             alt="imageOfPerson"
-            className="relative w-full h-auto"
+            className="relative"
           />
         </div>
 

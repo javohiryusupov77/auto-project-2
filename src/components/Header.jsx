@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FaWhatsapp, FaTelegramPlane, FaInstagram } from "react-icons/fa";
 import { TbBellRingingFilled } from "react-icons/tb";
+import { MdCall } from "react-icons/md";
+
 import {
   MdEmail,
-  MdCall,
   MdKeyboardArrowRight,
   MdSearch,
   MdMenu,
@@ -63,7 +64,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-slate-200 w-full">
+      <header className="bg-slate-200 w-full px-6">
         <div className="flex flex-wrap justify-between items-center p-4">
           <div className="md:hidden">
             <button onClick={toggleMenu}>
@@ -166,11 +167,11 @@ const Header = () => {
                   </a>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <MdCall size={24} className="text-blue-500" />
+                  <MdCall size={24} />
                   <p className="text-sm">+7(777)777-77-77</p>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <MdEmail size={24} className="text-orange-500" />
+                  <MdEmail size={24} />
                   <p className="cursor-pointer text-sm">info@mail.ru</p>
                 </div>
               </div>
@@ -178,11 +179,11 @@ const Header = () => {
           )}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex gap-2 items-center">
-              <MdCall size={24} className="text-blue-500" />
+              <MdCall size={24} />
               <p className="text-sm">+7(777)777-77-77</p>
             </div>
             <div className="flex gap-2 items-center">
-              <MdEmail size={24} className="text-orange-500" />
+              <MdEmail size={24} />
               <p className="cursor-pointer text-sm">info@mail.ru</p>
             </div>
             <div>

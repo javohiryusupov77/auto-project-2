@@ -18,12 +18,12 @@ const StillSelecting = () => {
           <p className="text-white mb-4 text-center md:text-left">
             Оставьте заявку, и наши менеджеры <br /> проконсультируют вас!
           </p>
-          <button className="bg-[#71B2F7] text-white px-4 py-2 rounded">
+          <button className="bg-[#71B2F7] text-white px-6 py-4 rounded">
             Оставить заявку
           </button>
         </div>
         <div className="flex justify-center items-center">
-          <img src={car} alt="car" className="w-full max-w-xs" />
+          <img src={car} alt="car" />
         </div>
       </div>
     </div>
