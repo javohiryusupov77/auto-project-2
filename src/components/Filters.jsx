@@ -111,6 +111,9 @@ const Section = () => {
                 styles={customStyles}
                 formatOptionLabel={formatOptionLabel}
                 className="bg-gray-100 rounded"
+                defaultValue={
+                  item.label === "Страна производства" ? item.options[0] : null
+                }
               />
             </div>
           ))}

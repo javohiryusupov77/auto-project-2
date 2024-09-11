@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { BiLike, BiDislike } from "react-icons/bi";
+import { FcLike } from "react-icons/fc";
+import { IoHeartDislikeOutline } from "react-icons/io5";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -63,6 +64,20 @@ const Katalog = () => {
       description: "A stylish fuel car with a high-end finish.",
     },
     {
+      id: 6,
+      name: "Mercedes GLS",
+      year: 2021,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkR3g7jwMjHtAGPiQMWCRPZ_b1DbqrEBRRYw&s",
+      price: 75000,
+      mileage: 3000,
+      createdIn: "Germany",
+      fuelConsumption: "10.2 L/100 km",
+      engineType: "Fuel",
+      likes: 0,
+      description: "A premium fuel car with advanced technology and features.",
+    },
+    {
       id: 5,
       name: "Mercedes C-Class",
       year: 2022,
@@ -76,20 +91,6 @@ const Katalog = () => {
       likes: 0,
       description:
         "A hybrid car that combines performance with fuel efficiency.",
-    },
-    {
-      id: 6,
-      name: "Mercedes GLS",
-      year: 2021,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkR3g7jwMjHtAGPiQMWCRPZ_b1DbqrEBRRYw&s",
-      price: 75000,
-      mileage: 3000,
-      createdIn: "Germany",
-      fuelConsumption: "10.2 L/100 km",
-      engineType: "Fuel",
-      likes: 0,
-      description: "A premium fuel car with advanced technology and features.",
     },
     {
       id: 1,
@@ -245,31 +246,26 @@ const Katalog = () => {
                 <p className="text-md text-gray-600">{car.fuelConsumption}</p>
               </div>
               <div className="flex justify-between items-center">
-                <p className="text-md text-gray-600">
-                   {car.createdIn}
-                </p>
-                <p className="text-md text-gray-600">
-                  {car.engineType}
-                </p>
+                <p className="text-md text-gray-600">{car.createdIn}</p>
+                <p className="text-md text-gray-600">{car.engineType}</p>
               </div>
               <p className="text-sm text-gray-800 mt-2">{car.description}</p>
-              <div className="mt-2 flex items-center">
+              <div className="mt-2 flex justify-end items-center">
                 <button
                   onClick={() => handleLike(car.id)}
                   className={`py-1 px-2 rounded ${
-                    likedCars.has(car.id) ? "bg-gray-400" : "bg-blue-500"
-                  } text-white flex items-center`}
+                    likedCars.has(car.id) ? "bg-gray-400" : ""
+                  }`}
                 >
                   {likedCars.has(car.id) ? (
                     <>
-                      <BiDislike className="mr-1" />
+                      <IoHeartDislikeOutline className="mr-1" />
                     </>
                   ) : (
                     <>
-                      <BiLike className="mr-1" />
+                      <FcLike className="mr-1" />
                     </>
                   )}
-                  {car.likes}
                 </button>
               </div>
             </div>
@@ -277,37 +273,44 @@ const Katalog = () => {
         </div>
       </div>
 
-      {/* Pagination controls */}
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-8">
+        {/* Previous button */}
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`px-3 py-2 rounded-md mr-2 ${
-            currentPage === 1 ? "bg-gray-300" : "bg-blue-500 text-white"
+          className={`px-4 py-2 mr-2 rounded-lg transition-all duration-300 ${
+            currentPage === 1
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:scale-105"
           }`}
         >
           Previous
         </button>
+
         {Array.from({ length: totalPages }).map((_, index) => (
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
-            className={`px-3 py-2 rounded-md mx-1 ${
+            className={`px-4 py-2 mx-1 rounded-full transition-all duration-300 ease-in-out ${
               currentPage === index + 1
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200"
-            }`}
+                ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg transform scale-110"
+                : "bg-gray-200 hover:bg-blue-500 hover:text-white hover:shadow-lg hover:scale-105"
+            } relative group`}
           >
             {index + 1}
+            <span className="absolute bottom-0 mb-8 hidden group-hover:block text-xs bg-black text-white rounded px-2 py-1">
+              Go to page {index + 1}
+            </span>
           </button>
         ))}
+
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`px-3 py-2 rounded-md ml-2 ${
+          className={`px-4 py-2 ml-2 rounded-lg transition-all duration-300 ${
             currentPage === totalPages
-              ? "bg-gray-300"
-              : "bg-blue-500 text-white"
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:scale-105"
           }`}
         >
           Next

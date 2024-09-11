@@ -61,6 +61,20 @@ export const AutoCarsProvider = ({ children }) => {
      description: "A stylish fuel car with a high-end finish.",
    },
    {
+     id: 6,
+     name: "Mercedes GLS",
+     year: 2021,
+     image:
+       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkR3g7jwMjHtAGPiQMWCRPZ_b1DbqrEBRRYw&s",
+     price: 75000,
+     mileage: 3000,
+     createdIn: "Germany",
+     fuelConsumption: "10.2 L/100 km",
+     engineType: "Fuel",
+     likes: 0,
+     description: "A premium fuel car with advanced technology and features.",
+   },
+   {
      id: 5,
      name: "Mercedes C-Class",
      year: 2022,
@@ -74,20 +88,6 @@ export const AutoCarsProvider = ({ children }) => {
      likes: 0,
      description:
        "A hybrid car that combines performance with fuel efficiency.",
-   },
-   {
-     id: 6,
-     name: "Mercedes GLS",
-     year: 2021,
-     image:
-       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkR3g7jwMjHtAGPiQMWCRPZ_b1DbqrEBRRYw&s",
-     price: 75000,
-     mileage: 3000,
-     createdIn: "Germany",
-     fuelConsumption: "10.2 L/100 km",
-     engineType: "Fuel",
-     likes: 0,
-     description: "A premium fuel car with advanced technology and features.",
    },
    {
      id: 1,
@@ -186,4 +186,3 @@ export const AutoCarsProvider = ({ children }) => {
 };
 
 export const useAutoCars = () => useContext(AutoCarsContext);
-Ω
