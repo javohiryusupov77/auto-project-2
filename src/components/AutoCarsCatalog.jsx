@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FcLike } from "react-icons/fc";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Katalog = () => {
   const carsPerPage = 6;
@@ -219,6 +219,10 @@ const Katalog = () => {
     const endIndex = startIndex + carsPerPage;
     return cars.slice(startIndex, endIndex);
   };
+  const handleLinkClick = (path) => {
+    window.scrollTo(0, 0);
+    useNavigate(navigate(path));
+  };
 
   return (
     <div className="p-4">
@@ -228,11 +232,16 @@ const Katalog = () => {
           {getCurrentPageCars().map((car) => (
             <div key={car.id} className="border p-4 rounded-lg shadow-md">
               <Link to={`/about-cars/${car.id}`}>
-                <img
-                  src={car.image}
-                  alt={`Car ${car.id}`}
-                  className="w-full h-40 object-cover mb-2"
-                />
+                <button
+                  onClick={() => handleLinkClick(`/about-cars/${car.id}`)}
+                  className="w-full h-40"
+                >
+                  <img
+                    src={car.image}
+                    alt={`Car ${car.id}`}
+                    className="w-full h-40 object-cover mb-2"
+                  />
+                </button>
               </Link>
               <p className="text-lg font-bold">{car.name}</p>
               <div className="flex justify-between items-center">
@@ -321,9 +330,11 @@ const Katalog = () => {
         <div>
           <b className="text-xl">
             <u>
-              <Link className="text-[#293843]" to="/about-cars">
-                Перейти в каталог
-              </Link>
+              <button onClick={() => handleLinkClick("/about-cars")}>
+                <Link className="text-[#293843]" to="/about-cars">
+                  Перейти в каталог
+                </Link>
+              </button>
             </u>
           </b>
         </div>
