@@ -177,6 +177,92 @@ const Katalog = () => {
       likes: 0,
       description: "A premium fuel car with advanced technology and features.",
     },
+    ,
+    {
+      id: 1,
+      name: "Mercedes S-Class",
+      year: 2020,
+      image:
+        "https://www.slashgear.com/img/gallery/12-most-expensive-mercedes-of-all-time/l-intro-1701212622.jpg",
+      price: 45000,
+      mileage: 5000,
+      createdIn: "Germany",
+      fuelConsumption: "5.6 L/100 km",
+      engineType: "Hybrid",
+      likes: 0,
+      description: "A luxurious hybrid vehicle with state-of-the-art features.",
+    },
+    {
+      id: 2,
+      name: "Mercedes E-Class",
+      year: 2019,
+      image:
+        "https://www.slashgear.com/img/gallery/10-most-luxurious-mercedes-benz-cars-ever-made-ranked/l-intro-1686086979.jpg",
+      price: 40000,
+      mileage: 8000,
+      createdIn: "Germany",
+      fuelConsumption: "6.8 L/100 km",
+      engineType: "Fuel",
+      likes: 0,
+      description: "A fuel-powered car with excellent performance and comfort.",
+    },
+    {
+      id: 3,
+      name: "Mercedes AMG GT",
+      year: 2021,
+      image:
+        "https://img.indianautosblog.com/2014/08/Rendering-Mercedes-AMG-GT.jpg",
+      price: 60000,
+      mileage: 2000,
+      createdIn: "Germany",
+      fuelConsumption: "8.3 L/100 km",
+      engineType: "Hybrid",
+      likes: 0,
+      description: "An affordable hybrid car with a sleek design.",
+    },
+    {
+      id: 4,
+      name: "Mercedes GLE",
+      year: 2018,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUtdQGTnISBBzFxTL3_hIKovaA8WWbgVNs8Q&s",
+      price: 38000,
+      mileage: 12000,
+      createdIn: "Germany",
+      fuelConsumption: "7.5 L/100 km",
+      engineType: "Fuel",
+      likes: 0,
+      description: "A stylish fuel car with a high-end finish.",
+    },
+    {
+      id: 5,
+      name: "Mercedes C-Class",
+      year: 2022,
+      image:
+        "https://i.pinimg.com/originals/b9/05/3a/b9053a37387e8a6ec8da0bff568d9b3b.jpg",
+      price: 50000,
+      mileage: 4000,
+      createdIn: "Germany",
+      fuelConsumption: "5.3 L/100 km",
+      engineType: "Hybrid",
+      likes: 0,
+      description:
+        "A hybrid car that combines performance with fuel efficiency.",
+    },
+    {
+      id: 6,
+      name: "Mercedes GLS",
+      year: 2021,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkR3g7jwMjHtAGPiQMWCRPZ_b1DbqrEBRRYw&s",
+      price: 75000,
+      mileage: 3000,
+      createdIn: "Germany",
+      fuelConsumption: "10.2 L/100 km",
+      engineType: "Fuel",
+      likes: 0,
+      description: "A premium fuel car with advanced technology and features.",
+    },
   ];
 
   const [cars, setCars] = useState(initialCars);
@@ -219,8 +305,8 @@ const Katalog = () => {
     const endIndex = startIndex + carsPerPage;
     return cars.slice(startIndex, endIndex);
   };
-   const navigate = useNavigate();
-   
+  const navigate = useNavigate();
+
   const handleLinkClick = (path) => {
     window.scrollTo(0, 0);
     navigate(path);
@@ -286,7 +372,7 @@ const Katalog = () => {
 
       <div className="flex justify-center mt-8">
         {/* Previous button */}
-        <button
+        {/* <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className={`px-4 py-2 mr-2 rounded-lg transition-all duration-300 ${
@@ -296,7 +382,7 @@ const Katalog = () => {
           }`}
         >
           Previous
-        </button>
+        </button> */}
 
         {Array.from({ length: totalPages }).map((_, index) => (
           <button
@@ -304,18 +390,21 @@ const Katalog = () => {
             onClick={() => handlePageChange(index + 1)}
             className={`px-4 py-2 mx-1 rounded-full transition-all duration-300 ease-in-out ${
               currentPage === index + 1
-                ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg transform scale-110"
-                : "bg-gray-200 hover:bg-blue-500 hover:text-white hover:shadow-lg hover:scale-105"
+                ? "bg-[#293843] text-white shadow-lg transform scale-110"
+                : "bg-slate-100 hover:bg-blue-500 hover:text-white hover:shadow-lg hover:scale-105"
             } relative group`}
+            style={{
+              filter: currentPage === index + 1 ? "none" : "grayscale(100%)",
+            }}
           >
-            {index + 1}
-            <span className="absolute bottom-0 mb-8 hidden group-hover:block text-xs bg-black text-white rounded px-2 py-1">
+            {/* <span className="absolute bottom-0 mb-8 hidden group-hover:block text-xs bg-black text-white rounded px-2 py-1">
               Go to page {index + 1}
-            </span>
+            </span> */}
+            {index + 1}
           </button>
         ))}
 
-        <button
+        {/* <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className={`px-4 py-2 ml-2 rounded-lg transition-all duration-300 ${
@@ -325,7 +414,7 @@ const Katalog = () => {
           }`}
         >
           Next
-        </button>
+        </button> */}
       </div>
 
       <div className="flex items-center justify-end gap-2 m-4">

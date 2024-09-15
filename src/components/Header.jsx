@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { FaWhatsapp, FaTelegramPlane, FaInstagram } from "react-icons/fa";
 import { TbBellRingingFilled } from "react-icons/tb";
 import { MdCall } from "react-icons/md";
-
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   MdEmail,
   MdKeyboardArrowRight,
@@ -18,7 +19,11 @@ const Header = () => {
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
   };
-
+  const navigate = useNavigate();
+  const Handleback = () => {
+    navigate("/");
+  };
+1
   const translations = {
     ru: {
       home: "Главная",
@@ -188,7 +193,7 @@ const Header = () => {
             </div>
             <div>
               <select
-              style={{outline:"none"}}
+                style={{ outline: "none" }}
                 className="border rounded p-1 text-sm bg-inherit"
                 value={language}
                 onChange={handleLanguageChange}
@@ -206,12 +211,12 @@ const Header = () => {
         className="flex flex-wrap items-center py-4 px-11 md:justify-between md:space-x-4 shadow-slate-100"
       >
         <div className="flex-grow">
-          <h1 className="text-2xl font-bold">
-            <a href="#" className="text-blue-600">
-              You
-            </a>
-            Car
-          </h1>
+          <Link to="/" className="flex items-center">
+            <div className="flex items-center">
+              <b className="text-2xl text-blue-600">You</b>
+              <h1 className="text-2xl font-bold">Car</h1>
+            </div>
+          </Link>
         </div>
         <ul className="hidden md:flex space-x-4">
           <li className="flex items-center gap-2">
