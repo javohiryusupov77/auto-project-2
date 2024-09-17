@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 # AutoFront
 # auto-project
 # Auto
+# auto-project-2
