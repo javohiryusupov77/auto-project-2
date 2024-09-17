@@ -27,7 +27,7 @@ const AboutUs = () => {
           Связаться с нами
         </button>
 
-        <div className="absolute bottom-[-50px] right-[-50px]">
+        <div className="absolute bottom-[-50px] right-[-50px] hidden sm:block">
           <img src={tires} alt="Tires" className="w-24 md:w-auto" />
         </div>
       </div>

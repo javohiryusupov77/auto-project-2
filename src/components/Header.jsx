@@ -23,7 +23,7 @@ const Header = () => {
   const Handleback = () => {
     navigate("/");
   };
-1
+  1;
   const translations = {
     ru: {
       home: "Главная",
@@ -72,9 +72,9 @@ const Header = () => {
       <header className="bg-slate-200 w-full px-6">
         <div className="flex flex-wrap justify-between items-center p-4">
           <div className="md:hidden">
-            <button onClick={toggleMenu}>
+            {/* <button onClick={toggleMenu}>
               {menuOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
-            </button>
+            </button> */}
           </div>
 
           {/* Desktop Menu */}
@@ -90,7 +90,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="flex space-x-4 md:space-x-6 me-8">
+          <div className="hidden lg:flex space-x-4 lg:space-x-6 me-8">
             <a
               href="https://wa.me/yourwhatsapplink"
               target="_blank"
@@ -208,9 +208,9 @@ const Header = () => {
       </header>
       <div
         style={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
-        className="flex flex-wrap items-center py-4 px-11 md:justify-between md:space-x-4 shadow-slate-100"
+        className="flex items-center py-4 px-11 shadow-slate-100 md:justify-between md:space-x-4"
       >
-        <div className="flex-grow">
+        <div className="flex-grow flex justify-center pr-4">
           <Link to="/" className="flex items-center">
             <div className="flex items-center">
               <b className="text-2xl text-blue-600">You</b>
@@ -218,6 +218,8 @@ const Header = () => {
             </div>
           </Link>
         </div>
+
+        {/* Navigation items hidden on mobile */}
         <ul className="hidden md:flex space-x-4">
           <li className="flex items-center gap-2">
             <a href="#">{translations[language].cars}</a>
@@ -232,31 +234,37 @@ const Header = () => {
             <MdKeyboardArrowRight className="text-blue-600" />
           </li>
         </ul>
-        <div className="relative flex items-center ml-4">
+
+        {/* Search input and hamburger menu */}
+        <div className="relative flex items-center justify-center mx-auto">
           <input
             type="text"
             placeholder={translations[language].searchPlaceholder}
-            className="p-2 pl-10 border rounded-lg outline-none text-sm"
+            className=" pl-3 border rounded-lg outline-none  sm:p-3 sm:pl-6
+             md:text-lg"
           />
-          <button className="absolute left-2">
-            <MdSearch className="text-blue-600" />
+          <button className="absolute left-2 hidden md:block">
+            <MdSearch />
           </button>
+          {/* Hamburger menu for mobile view */}
+          <div className="md:hidden ml-2 mt-2">
+            <button onClick={toggleMenu}>
+              {menuOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
+            </button>
+          </div>
         </div>
-        <div className="hidden md:block">
+
+        {/* Hidden on mobile, visible on larger screens */}
+        <div className="hidden md:flex space-x-4">
           <TbBellRingingFilled size={24} />
-        </div>
-        <div className="hidden md:block">
           <button className="bg-gray-200 py-2 px-4 rounded text-sm">
             Войти
           </button>
-        </div>
-        <div className="hidden md:block">
           <button className="bg-blue-500 text-white py-2 px-4 rounded text-sm">
             Регистрация
           </button>
         </div>
       </div>
-      <br />
     </>
   );
 };

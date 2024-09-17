@@ -3,6 +3,8 @@ import { FcLike } from "react-icons/fc";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../axiosConfig";
+
 
 const Katalog = () => {
   const carsPerPage = 6;
@@ -264,7 +266,15 @@ const Katalog = () => {
       description: "A premium fuel car with advanced technology and features.",
     },
   ];
-
+  axiosInstance
+    .get("/cars")
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  const [state, setState] = useState([]);
   const [cars, setCars] = useState(initialCars);
   const [likedCars, setLikedCars] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
