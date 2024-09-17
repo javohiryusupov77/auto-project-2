@@ -16,7 +16,7 @@ const Footer = () => {
               <FaTelegramPlane size={30} />
               <FaInstagram size={30} />
             </div>
-            <p>© 1-й автоброкер Внесём качественные изменения в Вашу жизнь!</p>
+            <p>© 1-й автоброкер Внесём качественные изменения в Вашу жизнь!</p>
           </div>
           <div className="flex flex-col">
             <b className="mb-2">Компания</b>
@@ -24,7 +24,7 @@ const Footer = () => {
               Каталог
             </a>
             <a href="#" className="text-gray-400 mb-1">
-              О нас
+              O нас
             </a>
             <a href="#" className="text-gray-400 mb-1">
               Новости
