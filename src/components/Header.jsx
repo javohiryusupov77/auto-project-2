@@ -3,7 +3,7 @@ import { FaWhatsapp, FaTelegramPlane, FaInstagram } from "react-icons/fa";
 import { TbBellRingingFilled } from "react-icons/tb";
 import { MdCall } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Dialog } from "@headlessui/react";
 import {
   MdEmail,
   MdKeyboardArrowRight,
@@ -19,11 +19,7 @@ const Header = () => {
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
   };
-  const navigate = useNavigate();
-  const Handleback = () => {
-    navigate("/");
-  };
-  1;
+
   const translations = {
     ru: {
       home: "Главная",
@@ -115,73 +111,88 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="fixed inset-0 bg-slate-200 z-50 flex flex-col items-center py-16 space-y-4">
-              <div className="flex justify-between items-center w-full px-4">
-                <button onClick={toggleMenu}>
-                  <MdClose size={24} />
-                </button>
-                <select
-                  className="border rounded p-1 text-sm"
-                  value={language}
-                  onChange={handleLanguageChange}
-                >
-                  <option value="ru">Rus</option>
-                  <option value="uzb">Uzb</option>
-                  <option value="en">Eng</option>
-                </select>
-              </div>
-              <ul className="flex flex-col items-center space-y-4">
-                {Object.keys(translations[language])
-                  .slice(0, 5)
-                  .map((key) => (
-                    <li key={key} className="text-lg p-4 hover:text-blue-600">
-                      {translations[language][key]}
-                    </li>
-                  ))}
-                {/* Added menu items */}
-                <li className="text-lg p-4 hover:text-blue-600">
-                  {translations[language].cars}
-                </li>
-                <li className="text-lg p-4 hover:text-blue-600">
-                  {translations[language].commercialTransport}
-                </li>
-              </ul>
-              <div className="flex flex-col items-center space-y-4">
-                <div className="flex space-x-4">
-                  <a
-                    href="https://wa.me/yourwhatsapplink"
-                    target="_blank"
-                    rel="noopener noreferrer"
+          <Dialog
+            open={menuOpen}
+            onClose={toggleMenu}
+            className="fixed inset-0 z-50"
+          >
+            <div
+              className="fixed inset-0 bg-black opacity-30"
+              aria-hidden="true"
+            />
+            <div className="fixed inset-0 flex justify-center items-center">
+              <div className="bg-slate-200 p-4 sm:p-6 w-full max-w-md mx-auto rounded-lg shadow-lg h-full max-h-screen overflow-auto">
+                {/* Close Button and Language Selector */}
+                <div className="flex justify-between items-center w-full mb-6">
+                  <button onClick={toggleMenu}>
+                    <MdClose size={24} />
+                  </button>
+                  <select
+                    className="border rounded p-1 text-sm"
+                    value={language}
+                    onChange={handleLanguageChange}
                   >
-                    <FaWhatsapp size={24} />
-                  </a>
-                  <a
-                    href="https://telegram.me/yourtelegramlink"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaTelegramPlane size={24} />
-                  </a>
-                  <a
-                    href="https://instagram.com/yourinstagramlink"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaInstagram size={24} />
-                  </a>
+                    <option value="ru">Rus</option>
+                    <option value="uzb">Uzb</option>
+                    <option value="en">Eng</option>
+                  </select>
                 </div>
-                <div className="flex gap-2 items-center">
-                  <MdCall size={24} />
-                  <p className="text-sm">+7(777)777-77-77</p>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <MdEmail size={24} />
-                  <p className="cursor-pointer text-sm">info@mail.ru</p>
+
+                {/* Menu Items */}
+                <ul className="flex flex-col items-center space-y-4 mb-4">
+                  {Object.keys(translations[language])
+                    .slice(0, 5)
+                    .map((key) => (
+                      <li key={key} className="text-lg p-4 hover:text-blue-600">
+                        {translations[language][key]}
+                      </li>
+                    ))}
+                  {/* Added menu items */}
+                  <li className="text-lg p-4 hover:text-blue-600">
+                    {translations[language].cars}
+                  </li>
+                  <li className="text-lg p-4 hover:text-blue-600">
+                    {translations[language].commercialTransport}
+                  </li>
+                </ul>
+
+                {/* Social Media Links */}
+                <div className="flex flex-col items-center space-y-4">
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://wa.me/yourwhatsapplink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaWhatsapp size={24} />
+                    </a>
+                    <a
+                      href="https://telegram.me/yourtelegramlink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaTelegramPlane size={24} />
+                    </a>
+                    <a
+                      href="https://instagram.com/yourinstagramlink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaInstagram size={24} />
+                    </a>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <MdCall size={24} />
+                    <p className="text-sm">+7(777)777-77-77</p>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <MdEmail size={24} />
+                    <p className="cursor-pointer text-sm">info@mail.ru</p>
+                  </div>
                 </div>
               </div>
             </div>
-          )}
+          </Dialog>
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex gap-2 items-center">
               <MdCall size={24} />
@@ -238,10 +249,10 @@ const Header = () => {
         {/* Search input and hamburger menu */}
         <div className="relative flex items-center justify-center mx-auto">
           <input
+          style={{maxWidth:"120px"}}
             type="text"
             placeholder={translations[language].searchPlaceholder}
-            className=" pl-3 border rounded-lg outline-none  sm:p-3 sm:pl-6
-             md:text-lg"
+            className="p-[4px] border rounded-lg outline-none sm:p-2 sm:pl-6"
           />
           <button className="absolute left-2 hidden md:block">
             <MdSearch />
@@ -255,7 +266,7 @@ const Header = () => {
         </div>
 
         {/* Hidden on mobile, visible on larger screens */}
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           <TbBellRingingFilled size={24} />
           <button className="bg-gray-200 py-2 px-4 rounded text-sm">
             Войти
